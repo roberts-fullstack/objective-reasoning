@@ -1,66 +1,48 @@
-// ┌─────────────────┐
-// │ Your code here! │	
-// └─────────────────┘
-
-function isAdmin(usr){
-    return usr.userRole === 'ADMIN'
-    ?  true
-    : false;
+function isAdmin(object){
+    if(object.userRole !== 'ADMIN'){
+        return false;
+    }else{
+        return true;
+    }
 }
 
-function getEmail(usr){
-    return `${usr.firstName.toLowerCase()}.${usr.lastName.toLowerCase()}@codeimmersives.com`
+function getEmail(user){
+    let emailz =  user.firstName + '.' + user.lastName + '@codeimmersives.com'; 
+    return emailz.toLowerCase(); 
 }
 
-function getPlaylistLength(obj){
-    return obj.songs.length;
+function getPlaylistLength(name){
+   let playlistz = name.name;
+   let songz = name.songs.length
+   return songz;
+
 }
 
-
-// Write a function, getHardestHomework that takes in an array of homework objects and returns the name of the hardest homework assignment. The hardest homework will be the one that has the lowest average score. If the array contains no homeworks, return an empty string.
-
-// Examples
-
-// getHardestHomework([])
-// => ''
-
-// getHardestHomework([
-//     { name: 'homework 1', averageScore: 99 },
-//     { name: 'homework 2', averageScore: 1 }
-// ])
-// => 'homework 2'
-
-// getHardestHomework([
-//     { name: 'hip-hip-array', averageScore: 12 },
-//     { name: 'wait-i-object', averageScore: 200 },
-//     { name: 'objective-reasoning', averageScore: 25 }
-// ])
-// => 'hip-hip-array'
-
-function getHardestHomework(arr){
-    let hard = '';
-    if (arr.length === 0){
-        return hard;
-    } else {
-        let score = arr[0].averageScore
-        hard = arr[0].name;
-        for (let i = 1; i < arr.length; i++){
-            if (arr[i].averageScore < score){
-                hard = arr[i].name;
+function getHardestHomework(homework){
+    
+        if(homework.length === 0){
+        return '';
+    }
+    let lowestgrade = homework[0].averageScore;
+    let lowestname = homework[0].name;
+        for (let i = 0; i < homework.length; i ++){
+            
+            if (homework[i].averageScore < lowestgrade ){
+               lowestgrade = homework[i].averageScore;
+               lowestname = homework[i].name;
             }
-        }
-        return hard;
-    }
-}
+            
+        }   
+    return lowestname;
+} 
+function createPhonebook(names, numbers){
+    let phonebook = {};
 
-function createPhonebook(arrName, arrPhone){
-    let book = {};
-    for (let i = 0; i < arrName.length; i++){
-        book[arrName[i]] = arrPhone[i];
+    for (let i = 0; i < names.length; i++){
+        phonebook[names[i]] = numbers[i];
     }
-    return book;
+    return phonebook;
 }
-
 // ┌─────────────────────────────────────┐
 // │ Do not modify code below this line. │
 // └─────────────────────────────────────┘
